@@ -5,9 +5,9 @@
 
 int main()
 {
-	RenderWindow window(sf::VideoMode(852, 480), "SFML WORK!");
+	RenderWindow window(VideoMode(960, 540), "MENU");
 	Texture h1;
-	h1.loadFromFile("C:\\Users\\DatNgu\\Desktop\\menu dhinh\\images\\WallPaper.jpg");
+	h1.loadFromFile("C:\\Users\\DatNgu\\Desktop\\OOP_BTL\\images\\m.png");
 	Sprite H1(h1);
 	Menu menu(window.getSize().x, window.getSize().y);
 
@@ -31,16 +31,24 @@ int main()
 				case Keyboard::Down:
 					menu.MoveDown();
 					break;
+				case Keyboard::Escape:{
+					window.close();
+					break;
+				}
 				case Keyboard::Return:
 					switch (menu.GetPressedItem())
 					{
 					case 0:{
 						
 							window.close();
-							RenderWindow window(VideoMode(800, 504), "The Chess! (press SPACE)");
-						    Texture t1,t2;
+							RenderWindow window(VideoMode(650, 504), "The Chess!");
+						    Texture t1,t2,t3,t4;
+						    
 						    t1.loadFromFile("images/figures.png"); 
 						    t2.loadFromFile("images/board.png");
+						    t3.loadFromFile("images/a1.png");
+						    t4.loadFromFile("images/turn.png");
+						    
 							sf::SoundBuffer moveself;
 							moveself.loadFromFile("move-self.wav");
 							sf::Sound sfx;
@@ -48,7 +56,8 @@ int main()
 						
 						    for(int i=0;i<32;i++) f[i].setTexture(t1);
 						    Sprite sBoard(t2); 
-						
+							Sprite sBoard1(t3),turn(t4);
+							
 						    loadPosition();
 						
 						    bool isMove=false;
@@ -104,7 +113,9 @@ int main()
 						
 						    ////// draw  ///////
 						    window.clear(); // xoa mnan hinh
-						    window.draw(sBoard); /// ve ban co 
+						    window.draw(sBoard1);
+							window.draw(sBoard); /// ve ban co 
+//						    window.draw(turn);
 						    for(int i=0;i<32;i++) f[i].move(offset);// 
 						    for(int i=0;i<32;i++) window.draw(f[i]); window.draw(f[n]);
 						    for(int i=0;i<32;i++) f[i].move(-offset);
@@ -164,7 +175,6 @@ int main()
 		window.clear();
 		window.draw(H1);
 		menu.draw(window);
-
 		window.display();
 	}
 }
