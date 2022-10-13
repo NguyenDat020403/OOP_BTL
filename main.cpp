@@ -6,12 +6,12 @@
 int main()
 {
 	//Tao khung window hien thi menu
-	RenderWindow window(VideoMode(960, 540), "MENU");
+	RenderWindow window(VideoMode(650, 504), "MENU");
 	//Background menu
-	Texture h1;
-	h1.loadFromFile("C:\\Users\\DatNgu\\Desktop\\OOP_BTL\\images\\m.png");
-	Sprite H1(h1);
-	Menu menu(window.getSize().x, window.getSize().y);
+	Texture m1;
+	m1.loadFromFile("C:\\Users\\DatNgu\\Desktop\\OOP_BTL\\images\\m1.png");
+	Sprite M1(m1);
+	Menu menu(650,504);
 	//Bat su kien tu ban phim or chuot
 	while (window.isOpen())
 	{
@@ -40,12 +40,8 @@ int main()
 				case Keyboard::Return:
 					switch (menu.GetPressedItem())
 					{
-					case 0:{
-						window.close();
-						
+					case 0:{		
 						WindowPlay();
-						
-						
 						break;
 					} 
 					case 1:{
@@ -60,7 +56,7 @@ int main()
 						c.setFillColor(Color::White);c1.setFillColor(Color::Red);
 						c.setPosition(290,150);c1.setPosition(700,400);
 						window.clear();
-						window.draw(H1);
+						window.draw(M1);
 						window.draw(c);		
 						window.draw(c1);						
 						window.display();
@@ -73,7 +69,7 @@ int main()
 									if (event1.key.code == Keyboard::Return)
 									{
 										window.clear();
-										window.draw(H1);
+										window.draw(M1);
 										menu.draw(window);
 										window.display();
 										
@@ -101,7 +97,7 @@ int main()
 		}
 
 		window.clear();
-		window.draw(H1);
+		window.draw(M1);
 		menu.draw(window);
 		window.display();
 	}
